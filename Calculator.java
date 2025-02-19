@@ -1,6 +1,8 @@
 public class Calculator {
     public static void main(String[] args) {
         // Check if the required arguments are passed
+         System.out.println("Start");
+        
         if (args.length < 3) {
             System.out.println("Error: Missing arguments. Usage: java Calculator <operation> <num1> <num2>");
             System.exit(1);
@@ -17,6 +19,7 @@ public class Calculator {
             System.exit(1);
             return;
         }
+        System.out.println("Start1");
 
         // Perform the operation
         switch (operation) {
