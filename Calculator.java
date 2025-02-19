@@ -1,5 +1,6 @@
 public class Calculator {
     public static void main(String[] args) {
+        // Check if the required arguments are passed
         if (args.length < 3) {
             System.out.println("Error: Missing arguments. Usage: java Calculator <operation> <num1> <num2>");
             System.exit(1);
@@ -17,12 +18,16 @@ public class Calculator {
             return;
         }
 
-        if ("add".equals(operation)) {
-            System.out.println("Result: " + (num1 + num2));
-        } else if ("sub".equals(operation)) {
-            System.out.println("Result: " + (num1 - num2));
-        } else {
-            System.out.println("Error: Invalid operation! Use 'add' or 'sub'.");
+        // Perform the operation
+        switch (operation) {
+            case "add":
+                System.out.println("Result: " + (num1 + num2));
+                break;
+            case "sub":
+                System.out.println("Result: " + (num1 - num2));
+                break;
+            default:
+                System.out.println("Error: Invalid operation! Use 'add' or 'sub'.");
         }
     }
 }
