@@ -1,40 +1,28 @@
-import java.util.Scanner;
-
 public class Calculator {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        // Asking the user for operation
-        System.out.print("Enter operation (add/sub): ");
-        String operation = scanner.nextLine().trim().toLowerCase();
-
-        // Asking for the first number
-        System.out.print("Enter first number: ");
-        while (!scanner.hasNextInt()) {
-            System.out.println("Invalid input! Please enter a valid integer.");
-            scanner.next(); // discard invalid input
-            System.out.print("Enter first number: ");
+        if (args.length < 3) {
+            System.out.println("Error: Missing arguments. Usage: java Calculator <operation> <num1> <num2>");
+            System.exit(1);
         }
-        int num1 = scanner.nextInt();
 
-        // Asking for the second number
-        System.out.print("Enter second number: ");
-        while (!scanner.hasNextInt()) {
-            System.out.println("Invalid input! Please enter a valid integer.");
-            scanner.next(); // discard invalid input
-            System.out.print("Enter second number: ");
+        String operation = args[0].trim().toLowerCase();
+        int num1, num2;
+
+        try {
+            num1 = Integer.parseInt(args[1]);
+            num2 = Integer.parseInt(args[2]);
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Invalid number format. Please enter valid integers.");
+            System.exit(1);
+            return;
         }
-        int num2 = scanner.nextInt();
 
-        // Performing the operation
         if ("add".equals(operation)) {
             System.out.println("Result: " + (num1 + num2));
         } else if ("sub".equals(operation)) {
             System.out.println("Result: " + (num1 - num2));
         } else {
-            System.out.println("Invalid operation! Use 'add' or 'sub'.");
+            System.out.println("Error: Invalid operation! Use 'add' or 'sub'.");
         }
-
-        scanner.close();
     }
 }
